@@ -308,20 +308,40 @@ function loadData() {
   return JSON.parse(JSON.stringify(CV_DATA_LANGUAGES[currentLang] || CV_DATA_LANGUAGES.id));
 }
 
-// Async Cloud Sync on Load
+// Async Cloud Sync on Load (Smart Bi-directional Sync)
 async function syncDataFromCloud() {
   if (typeof fetchCloudCVData === "function") {
-    const cloudData = await fetchCloudCVData();
-    if (cloudData) {
-      cvData = cloudData;
-      localStorage.setItem("cv_data_fajar_v1", JSON.stringify(cvData));
-      renderAll();
+    try {
+      const cloudData = await fetchCloudCVData();
+      const localRaw = localStorage.getItem("cv_data_fajar_v1");
+      let localData = null;
+      if (localRaw) {
+        try { localData = JSON.parse(localRaw); } catch(e) {}
+      }
+
+      if (cloudData && cloudData.profile) {
+        const cloudTime = new Date(cloudData.updatedAt || 0).getTime();
+        const localTime = new Date(localData?.updatedAt || 0).getTime();
+
+        if (cloudTime >= localTime || !localData) {
+          cvData = cloudData;
+          localStorage.setItem("cv_data_fajar_v1", JSON.stringify(cvData));
+          renderAll();
+        } else if (localData && typeof saveCloudCVData === "function") {
+          saveCloudCVData(localData);
+        }
+      } else if (localData && localData.profile && typeof saveCloudCVData === "function") {
+        saveCloudCVData(localData);
+      }
+    } catch (err) {
+      console.warn("Sinkronisasi cloud dilewati:", err);
     }
   }
 }
 
-// Save Data to LocalStorage & Supabase Cloud DB
+// Save Data to LocalStorage & Firebase Realtime Database
 function saveData() {
+  cvData.updatedAt = new Date().toISOString();
   localStorage.setItem("cv_data_fajar_v1", JSON.stringify(cvData));
   renderAll();
 
