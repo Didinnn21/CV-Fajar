@@ -9,16 +9,19 @@ function getFirebaseConfig() {
   const saved = localStorage.getItem(FIREBASE_CONFIG_KEY);
   if (saved) {
     try {
-      return JSON.parse(saved);
+      const parsed = JSON.parse(saved);
+      if (parsed && parsed.apiKey && parsed.databaseURL) {
+        return parsed;
+      }
     } catch (e) {
       console.warn("Gagal membaca konfigurasi Firebase dari LocalStorage", e);
     }
   }
   return {
-    apiKey: window.ENV_FIREBASE_API_KEY || "",
-    authDomain: window.ENV_FIREBASE_AUTH_DOMAIN || "",
-    databaseURL: window.ENV_FIREBASE_DATABASE_URL || "",
-    projectId: window.ENV_FIREBASE_PROJECT_ID || ""
+    apiKey: window.ENV_FIREBASE_API_KEY || "AIzaSyB2361YQPtsUO6_7NMh-QpkWr2AEhcAYeo",
+    authDomain: window.ENV_FIREBASE_AUTH_DOMAIN || "cvfajarnurcahya.firebaseapp.com",
+    databaseURL: window.ENV_FIREBASE_DATABASE_URL || "https://cvfajarnurcahya-default-rtdb.firebaseio.com",
+    projectId: window.ENV_FIREBASE_PROJECT_ID || "cvfajarnurcahya"
   };
 }
 
