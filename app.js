@@ -214,7 +214,7 @@ const TRANSLATIONS = {
     toolbar: { edit: "Modus Edit", print: "Cetak ATS PDF", export: "Export JSON", reset: "Reset" },
     modal: { title: "Edit Data CV - Fajar Nurcahya Gumillar", note: "Ubah data lalu klik Simpan untuk memperbarui tampilan CV.", save: "Simpan & Perbarui CV" },
     tabs: { profile: "Profil Utama", exp: "Pengalaman", edu: "Pendidikan", skills: "Keahlian & Skill", org: "Organisasi" },
-    footer: { rights: "Hak cipta dilindungi.", builtWith: "Dibuat dengan HTML5, CSS3, & JS Vanilla" }
+    footer: { rights: "Hak cipta dilindungi." }
   },
   en: {
     nav: { profile: "Profile", experience: "Experience", education: "Education", skills: "Skills", organization: "Organization", contact: "Contact", print: "Print ATS PDF" },
@@ -225,7 +225,7 @@ const TRANSLATIONS = {
     toolbar: { edit: "Edit Mode", print: "Print ATS PDF", export: "Export JSON", reset: "Reset" },
     modal: { title: "Edit CV Data - Fajar Nurcahya Gumillar", note: "Modify data and click Save to update CV.", save: "Save & Update CV" },
     tabs: { profile: "Main Profile", exp: "Experience", edu: "Education", skills: "Skills & Tools", org: "Organization" },
-    footer: { rights: "All rights reserved.", builtWith: "Built with HTML5, CSS3, & Vanilla JS" }
+    footer: { rights: "All rights reserved." }
   },
   jp: {
     nav: { profile: "プロフィール", experience: "職歴", education: "学歴", skills: "スキル", organization: "組織・活動", contact: "連絡先", print: "ATS PDF印刷" },
@@ -236,7 +236,7 @@ const TRANSLATIONS = {
     toolbar: { edit: "編集モード", print: "ATS PDF印刷", export: "JSON出力", reset: "リセット" },
     modal: { title: "CVデータ編集 - Fajar Nurcahya Gumillar", note: "データを変更し「保存」をクリックしてCVを更新します。", save: "保存してCVを更新" },
     tabs: { profile: "メインプロフィール", exp: "職歴", edu: "学歴", skills: "スキル・資格", org: "組織・活動" },
-    footer: { rights: "無断転載を禁じます。", builtWith: "HTML5、CSS3、Vanilla JSで作成" }
+    footer: { rights: "無断転載を禁じます。" }
   }
 };
 
