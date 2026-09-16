@@ -604,6 +604,32 @@ function setupEventListeners() {
     });
   }
 
+  // Circular Floating Action Button (FAB) & Speed-Dial Menu Toggle
+  const fabTrigger = document.getElementById("fab-trigger");
+  const fabMenu = document.getElementById("fab-menu");
+
+  if (fabTrigger && fabMenu) {
+    fabTrigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isActive = fabMenu.classList.toggle("active");
+      fabTrigger.classList.toggle("active", isActive);
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".fab-wrapper")) {
+        fabMenu.classList.remove("active");
+        fabTrigger.classList.remove("active");
+      }
+    });
+
+    fabMenu.querySelectorAll(".fab-menu-item").forEach(item => {
+      item.addEventListener("click", () => {
+        fabMenu.classList.remove("active");
+        fabTrigger.classList.remove("active");
+      });
+    });
+  }
+
   // Avatar Upload Handler (File Picker & FileReader Base64)
   const inputAvatarFile = document.getElementById("input-avatar-file");
   if (inputAvatarFile) {
