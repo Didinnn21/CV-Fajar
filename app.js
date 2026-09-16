@@ -951,36 +951,7 @@ function populateEditorForm() {
       </div>
     </div>
 
-    <!-- TAB 4: KEAHLIAN -->
-    <div id="tab-skills" class="modal-tab-pane">
-      <div class="editor-section-header">
-        <h4>Kelompok Keahlian & Skill</h4>
-        <button type="button" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;" onclick="addSkillCategory()">+ Tambah Kategori</button>
-      </div>
-
-      <div id="editor-skills-container" style="display: flex; flex-direction: column; gap: 16px;">
-        ${cvData.skills.map((cat, idx) => `
-          <div class="item-edit-card" data-idx="${idx}">
-            <div class="edit-card-title-row">
-              <strong>Kategori Skill #${idx + 1}</strong>
-              <button type="button" class="btn-remove-item" onclick="removeSkillCategory(${idx})">Hapus</button>
-            </div>
-
-            <div class="form-group">
-              <label>Nama Kategori</label>
-              <input type="text" class="form-control skill-cat-name" value="${escapeHtml(cat.category)}">
-            </div>
-
-            <div class="form-group">
-              <label>Daftar Keahlian / Chips (Dipisah koma)</label>
-              <input type="text" class="form-control skill-cat-items" value="${(cat.items || []).join(", ")}">
-            </div>
-          </div>
-        `).join("")}
-      </div>
-    </div>
-
-    <!-- TAB 5: ORGANISASI -->
+    <!-- TAB 4: ORGANISASI -->
     <div id="tab-organization" class="modal-tab-pane">
       <div class="editor-section-header">
         <h4>Pengalaman Organisasi</h4>
@@ -1014,6 +985,35 @@ function populateEditorForm() {
             <div class="form-group">
               <label>Deskripsi Peran & Kegiatan</label>
               <textarea class="form-control org-desc" rows="2">${escapeHtml(org.description)}</textarea>
+            </div>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+
+    <!-- TAB 5: KEAHLIAN -->
+    <div id="tab-skills" class="modal-tab-pane">
+      <div class="editor-section-header">
+        <h4>Kelompok Keahlian & Skill</h4>
+        <button type="button" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;" onclick="addSkillCategory()">+ Tambah Kategori</button>
+      </div>
+
+      <div id="editor-skills-container" style="display: flex; flex-direction: column; gap: 16px;">
+        ${cvData.skills.map((cat, idx) => `
+          <div class="item-edit-card" data-idx="${idx}">
+            <div class="edit-card-title-row">
+              <strong>Kategori Skill #${idx + 1}</strong>
+              <button type="button" class="btn-remove-item" onclick="removeSkillCategory(${idx})">Hapus</button>
+            </div>
+
+            <div class="form-group">
+              <label>Nama Kategori</label>
+              <input type="text" class="form-control skill-cat-name" value="${escapeHtml(cat.category)}">
+            </div>
+
+            <div class="form-group">
+              <label>Daftar Keahlian / Chips (Dipisah koma)</label>
+              <input type="text" class="form-control skill-cat-items" value="${(cat.items || []).join(", ")}">
             </div>
           </div>
         `).join("")}

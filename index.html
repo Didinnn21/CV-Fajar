@@ -26,8 +26,8 @@
           <li><a href="#profile" class="active" data-i18n="nav.profile">Profil</a></li>
           <li><a href="#experience" data-i18n="nav.experience">Pengalaman</a></li>
           <li><a href="#education" data-i18n="nav.education">Pendidikan</a></li>
-          <li><a href="#skills" data-i18n="nav.skills">Keahlian</a></li>
           <li><a href="#organization" data-i18n="nav.organization">Organisasi</a></li>
+          <li><a href="#skills" data-i18n="nav.skills">Keahlian</a></li>
           <li><a href="#contact" data-i18n="nav.contact">Kontak</a></li>
         </ul>
       </nav>
@@ -184,19 +184,6 @@
       </div>
     </section>
 
-    <!-- SKILLS SECTION -->
-    <section id="skills" class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-subtitle" data-i18n="sub.skills">Kompetensi Teknis</span>
-          <h2 class="section-title" data-i18n="title.skills">Keahlian & Spesialisasi</h2>
-        </div>
-        <div id="skills-grid" class="grid-3">
-          <!-- Rendered via JS -->
-        </div>
-      </div>
-    </section>
-
     <!-- ORGANIZATION SECTION -->
     <section id="organization" class="section">
       <div class="container">
@@ -205,6 +192,19 @@
           <h2 class="section-title" data-i18n="title.org">Pengalaman Organisasi</h2>
         </div>
         <div id="organization-list" class="timeline-list">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle" data-i18n="sub.skills">Kompetensi Teknis</span>
+          <h2 class="section-title" data-i18n="title.skills">Keahlian & Spesialisasi</h2>
+        </div>
+        <div id="skills-grid" class="grid-3">
           <!-- Rendered via JS -->
         </div>
       </div>
@@ -449,13 +449,6 @@
             </svg>
             <span data-i18n="tabs.edu">Pendidikan</span>
           </button>
-          <button class="modal-tab-btn" data-tab="tab-skills">
-            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <polyline points="22 4 12 14.01 9 11.01"></polyline>
-            </svg>
-            <span data-i18n="tabs.skills">Keahlian & Skill</span>
-          </button>
           <button class="modal-tab-btn" data-tab="tab-organization">
             <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -464,6 +457,13 @@
               <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
             </svg>
             <span data-i18n="tabs.org">Organisasi</span>
+          </button>
+          <button class="modal-tab-btn" data-tab="tab-skills">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <span data-i18n="tabs.skills">Keahlian & Skill</span>
           </button>
         </div>
 
