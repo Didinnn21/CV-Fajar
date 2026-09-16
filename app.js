@@ -650,6 +650,10 @@ function setupEventListeners() {
     if (el) {
       el.addEventListener("click", (e) => {
         e.preventDefault();
+        const fabMenu = document.getElementById("fab-menu");
+        const fabTrigger = document.getElementById("fab-trigger");
+        if (fabMenu) fabMenu.classList.remove("active");
+        if (fabTrigger) fabTrigger.classList.remove("active");
         window.print();
       });
     }

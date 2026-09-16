@@ -1479,16 +1479,26 @@ textarea.form-control {
     print-color-adjust: exact !important;
   }
 
-  /* ABSOLUTELY HIDE ALL WEB CONTROLS, CARDS, AVATARS, BUTTONS, & FORMS */
+  /* ABSOLUTELY HIDE ALL WEB CONTROLS, FAB BUTTONS, MODALS, CARDS, AVATARS, BUTTONS, & CONTACT FORM */
   header,
   footer,
   nav,
   svg,
   .header,
   .footer,
+  .fab-wrapper,
+  .fab-popup-menu,
+  .fab-circle-btn,
+  #fab-menu,
+  #fab-trigger,
   .floating-toolbar,
   .modal-overlay,
+  #modal-editor,
+  #modal-firebase-config,
+  #modal-supabase-config,
   .hero-actions,
+  #contact,
+  .contact-section,
   .contact-form,
   .contact-form-card,
   #cv-contact-form,
@@ -1509,6 +1519,7 @@ textarea.form-control {
   .profile-quick-stats,
   .contact-icon,
   .item-tags,
+  #custom-toast,
   [contenteditable="true"] {
     display: none !important;
     visibility: hidden !important;
@@ -1536,8 +1547,8 @@ textarea.form-control {
 
   /* ATS HEADER (CANDIDATE NAME & CONTACT LINE) */
   .hero-section {
-    margin-bottom: 10pt !important;
-    padding-bottom: 8pt !important;
+    margin-bottom: 8pt !important;
+    padding-bottom: 6pt !important;
     border-bottom: 1.5pt solid #000000 !important;
     text-align: center !important;
     display: block !important;
@@ -1558,7 +1569,7 @@ textarea.form-control {
     font-weight: bold !important;
     text-transform: uppercase !important;
     letter-spacing: 0.5pt !important;
-    margin: 0 0 3pt 0 !important;
+    margin: 0 0 2pt 0 !important;
     color: #000000 !important;
     line-height: 1.1 !important;
   }
@@ -1566,17 +1577,17 @@ textarea.form-control {
   .hero-title {
     font-size: 10.5pt !important;
     font-weight: bold !important;
-    color: #222222 !important;
-    margin: 0 0 6pt 0 !important;
+    color: #111111 !important;
+    margin: 0 0 4pt 0 !important;
     text-transform: capitalize !important;
   }
 
   .hero-bio {
-    font-size: 9pt !important;
+    font-size: 8.5pt !important;
     color: #111111 !important;
     text-align: justify !important;
-    margin: 0 0 6pt 0 !important;
-    line-height: 1.35 !important;
+    margin: 0 0 4pt 0 !important;
+    line-height: 1.3 !important;
   }
 
   .hero-info-pills {
@@ -1584,7 +1595,7 @@ textarea.form-control {
     justify-content: center !important;
     align-items: center !important;
     flex-wrap: wrap !important;
-    gap: 8pt !important;
+    gap: 6pt !important;
     margin-top: 4pt !important;
   }
 
@@ -1602,14 +1613,14 @@ textarea.form-control {
 
   .info-pill:not(:last-child)::after {
     content: "  •  ";
-    margin-left: 8pt;
+    margin-left: 6pt;
     color: #000000;
   }
 
   /* ATS SECTIONS & HEADERS */
   .section {
-    padding: 4pt 0 !important;
-    margin-bottom: 8pt !important;
+    padding: 3pt 0 !important;
+    margin-bottom: 6pt !important;
     page-break-inside: auto;
   }
 
@@ -1633,17 +1644,17 @@ textarea.form-control {
   .timeline-list {
     display: flex !important;
     flex-direction: column !important;
-    gap: 6pt !important;
+    gap: 5pt !important;
   }
 
   .timeline-item, .card {
     border: none !important;
     background: none !important;
     padding: 0 !important;
-    margin: 0 0 6pt 0 !important;
+    margin: 0 0 5pt 0 !important;
     box-shadow: none !important;
     border-radius: 0 !important;
-    page-break-inside: avoid;
+    page-break-inside: avoid !important;
   }
 
   .item-header {
@@ -1705,6 +1716,7 @@ textarea.form-control {
     padding: 0 !important;
     margin-bottom: 4pt !important;
     box-shadow: none !important;
+    page-break-inside: avoid !important;
   }
 
   .skill-category-card h3 {
@@ -1736,40 +1748,6 @@ textarea.form-control {
 
   .skill-chip:last-child::after {
     content: "";
-  }
-
-  /* CONTACT SECTION ATS FORMAT */
-  .contact-grid {
-    display: block !important;
-  }
-
-  .contact-info-list {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    gap: 12pt !important;
-  }
-
-  .contact-item {
-    border: none !important;
-    padding: 0 !important;
-    background: none !important;
-    font-size: 9pt !important;
-  }
-
-  .contact-item-title {
-    font-weight: bold !important;
-    margin-right: 4pt !important;
-    display: inline !important;
-  }
-
-  .contact-item-value {
-    display: inline !important;
-  }
-
-  a {
-    color: #000000 !important;
-    text-decoration: none !important;
   }
 }
 
