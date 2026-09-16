@@ -316,18 +316,20 @@ function initLanguage() {
 // Load Data from LocalStorage or Fallback to Language Default
 function loadData() {
   const saved = localStorage.getItem("cv_data_fajar_v1");
+  const defaultData = JSON.parse(JSON.stringify(CV_DATA_LANGUAGES[currentLang] || CV_DATA_LANGUAGES.id));
+
   if (saved) {
     try {
       const parsed = JSON.parse(saved);
-      // Ensure parsed data has complete updated experiences and organizations
-      if (parsed && parsed.experiences && parsed.experiences.length >= 2) {
-        return parsed;
-      }
+      // Force skills to match official 4 categories from CV document
+      parsed.skills = JSON.parse(JSON.stringify(defaultData.skills));
+      localStorage.setItem("cv_data_fajar_v1", JSON.stringify(parsed));
+      return parsed;
     } catch (e) {
       console.error("Failed to parse saved CV data", e);
     }
   }
-  const defaultData = JSON.parse(JSON.stringify(CV_DATA_LANGUAGES[currentLang] || CV_DATA_LANGUAGES.id));
+
   localStorage.setItem("cv_data_fajar_v1", JSON.stringify(defaultData));
   return defaultData;
 }
