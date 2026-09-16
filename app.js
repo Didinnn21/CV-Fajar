@@ -250,7 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Apply Selected Language & Update All Words & Content
 function setLanguage(lang) {
-  if (!TRANSLATIONS[lang]) lang = "id";
+  if (lang !== "en" && lang !== "id") lang = "id";
   currentLang = lang;
   localStorage.setItem("current_lang", lang);
 
@@ -269,19 +269,21 @@ function setLanguage(lang) {
     if (val) el.textContent = val;
   });
 
-  // 2. Translate dynamic CV content data
-  if (CV_DATA_LANGUAGES[lang]) {
+  // 2. Dynamic CV content data handling:
+  // Preserve user's saved CV data if it exists in localStorage or has been edited
+  const hasSavedData = localStorage.getItem("cv_data_fajar_v1");
+  if (!hasSavedData && CV_DATA_LANGUAGES[lang]) {
     const currentName = cvData && cvData.profile ? cvData.profile.name : "Fajar Nurcahya Gumillar";
     const currentEmail = cvData && cvData.profile ? cvData.profile.email : "Nurcahya0402@gmail.com";
     const currentAvatar = cvData && cvData.profile ? cvData.profile.avatar : "avatar.png";
 
     cvData = JSON.parse(JSON.stringify(CV_DATA_LANGUAGES[lang]));
-    cvData.profile.name = currentName;
-    cvData.profile.email = currentEmail;
-    cvData.profile.avatar = currentAvatar;
-
-    renderAll();
+    if (currentName) cvData.profile.name = currentName;
+    if (currentEmail) cvData.profile.email = currentEmail;
+    if (currentAvatar) cvData.profile.avatar = currentAvatar;
   }
+
+  renderAll();
 }
 
 function initLanguage() {
@@ -323,11 +325,11 @@ async function syncDataFromCloud() {
         const cloudTime = new Date(cloudData.updatedAt || 0).getTime();
         const localTime = new Date(localData?.updatedAt || 0).getTime();
 
-        if (cloudTime >= localTime || !localData) {
+        if (cloudData.updatedAt && cloudTime > localTime) {
           cvData = cloudData;
           localStorage.setItem("cv_data_fajar_v1", JSON.stringify(cvData));
           renderAll();
-        } else if (localData && typeof saveCloudCVData === "function") {
+        } else if (localData && localData.profile && typeof saveCloudCVData === "function") {
           saveCloudCVData(localData);
         }
       } else if (localData && localData.profile && typeof saveCloudCVData === "function") {
