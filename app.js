@@ -520,10 +520,22 @@ function setupEventListeners() {
     });
   }
 
+  // Real-time Input Synchronization for Modal Editor Tabs
+  const modalTabArea = document.getElementById("modal-tab-content-area");
+  if (modalTabArea) {
+    modalTabArea.addEventListener("input", () => {
+      extractEditorFormData();
+    });
+    modalTabArea.addEventListener("change", () => {
+      extractEditorFormData();
+    });
+  }
+
   // Sidebar Tab Switching inside Modal
   document.addEventListener("click", (e) => {
     const tabBtn = e.target.closest(".modal-tab-btn");
     if (tabBtn) {
+      extractEditorFormData();
       document.querySelectorAll(".modal-tab-btn").forEach(b => b.classList.remove("active"));
       document.querySelectorAll(".modal-tab-pane").forEach(p => p.classList.remove("active"));
 
@@ -943,6 +955,7 @@ function populateEditorForm() {
 
 // Global Handlers for Add/Remove Items
 window.addExperienceItem = function() {
+  extractEditorFormData();
   cvData.experiences.push({
     id: "exp-" + Date.now(),
     role: "[ Posisi Pekerjaan Baru ]",
@@ -957,12 +970,14 @@ window.addExperienceItem = function() {
 };
 
 window.removeExperienceItem = function(idx) {
+  extractEditorFormData();
   cvData.experiences.splice(idx, 1);
   populateEditorForm();
   document.querySelector('[data-tab="tab-experiences"]')?.click();
 };
 
 window.addEducationItem = function() {
+  extractEditorFormData();
   cvData.education.push({
     id: "edu-" + Date.now(),
     institution: "[ Universitas / Sekolah ]",
@@ -976,12 +991,14 @@ window.addEducationItem = function() {
 };
 
 window.removeEducationItem = function(idx) {
+  extractEditorFormData();
   cvData.education.splice(idx, 1);
   populateEditorForm();
   document.querySelector('[data-tab="tab-education"]')?.click();
 };
 
 window.addSkillCategory = function() {
+  extractEditorFormData();
   cvData.skills.push({
     id: "skill-cat-" + Date.now(),
     category: "[ Nama Kategori Baru ]",
@@ -992,12 +1009,14 @@ window.addSkillCategory = function() {
 };
 
 window.removeSkillCategory = function(idx) {
+  extractEditorFormData();
   cvData.skills.splice(idx, 1);
   populateEditorForm();
   document.querySelector('[data-tab="tab-skills"]')?.click();
 };
 
 window.addOrganizationItem = function() {
+  extractEditorFormData();
   cvData.organizations.push({
     id: "org-" + Date.now(),
     role: "[ Peran / Jabatan ]",
@@ -1010,6 +1029,7 @@ window.addOrganizationItem = function() {
 };
 
 window.removeOrganizationItem = function(idx) {
+  extractEditorFormData();
   cvData.organizations.splice(idx, 1);
   populateEditorForm();
   document.querySelector('[data-tab="tab-organization"]')?.click();
@@ -1017,38 +1037,44 @@ window.removeOrganizationItem = function(idx) {
 
 // Extract Data from Active Form Tab Elements
 function extractEditorFormData() {
-  const name = document.getElementById("edit-name")?.value;
-  if (name) cvData.profile.name = name;
+  const nameEl = document.getElementById("edit-name");
+  if (nameEl) cvData.profile.name = nameEl.value;
 
-  const title = document.getElementById("edit-title")?.value;
-  if (title) cvData.profile.title = title;
+  const titleEl = document.getElementById("edit-title");
+  if (titleEl) cvData.profile.title = titleEl.value;
 
-  const bio = document.getElementById("edit-bio")?.value;
-  if (bio) cvData.profile.bio = bio;
+  const bioEl = document.getElementById("edit-bio");
+  if (bioEl) cvData.profile.bio = bioEl.value;
 
-  const email = document.getElementById("edit-email")?.value;
-  if (email) cvData.profile.email = email;
+  const emailEl = document.getElementById("edit-email");
+  if (emailEl) cvData.profile.email = emailEl.value;
 
-  const phone = document.getElementById("edit-phone")?.value;
-  if (phone) cvData.profile.phone = phone;
+  const phoneEl = document.getElementById("edit-phone");
+  if (phoneEl) cvData.profile.phone = phoneEl.value;
 
-  const location = document.getElementById("edit-location")?.value;
-  if (location) cvData.profile.location = location;
+  const locationEl = document.getElementById("edit-location");
+  if (locationEl) cvData.profile.location = locationEl.value;
 
-  const instagram = document.getElementById("edit-instagram")?.value;
-  if (instagram !== undefined) cvData.profile.instagram = instagram;
+  const instagramEl = document.getElementById("edit-instagram");
+  if (instagramEl) cvData.profile.instagram = instagramEl.value;
 
-  const tiktok = document.getElementById("edit-tiktok")?.value;
-  if (tiktok !== undefined) cvData.profile.tiktok = tiktok;
+  const tiktokEl = document.getElementById("edit-tiktok");
+  if (tiktokEl) cvData.profile.tiktok = tiktokEl.value;
 
   if (!cvData.profile.stats) cvData.profile.stats = {};
-  cvData.profile.stats.experience = document.getElementById("edit-stat-experience")?.value || cvData.profile.stats.experience || "0 Thn";
-  cvData.profile.stats.skills = document.getElementById("edit-stat-skills")?.value || cvData.profile.stats.skills || "10+";
-  cvData.profile.stats.org = document.getElementById("edit-stat-org")?.value || cvData.profile.stats.org || "1+";
+  const expStatEl = document.getElementById("edit-stat-experience");
+  if (expStatEl) cvData.profile.stats.experience = expStatEl.value;
+
+  const skillStatEl = document.getElementById("edit-stat-skills");
+  if (skillStatEl) cvData.profile.stats.skills = skillStatEl.value;
+
+  const orgStatEl = document.getElementById("edit-stat-org");
+  if (orgStatEl) cvData.profile.stats.org = orgStatEl.value;
 
   // Extract Experiences
-  const expCards = document.querySelectorAll("#editor-exp-container .item-edit-card");
-  if (expCards.length > 0) {
+  const expContainer = document.getElementById("editor-exp-container");
+  if (expContainer) {
+    const expCards = expContainer.querySelectorAll(".item-edit-card");
     cvData.experiences = Array.from(expCards).map((card, idx) => ({
       id: cvData.experiences[idx]?.id || "exp-" + idx,
       role: card.querySelector(".exp-role")?.value || "",
@@ -1061,8 +1087,9 @@ function extractEditorFormData() {
   }
 
   // Extract Education
-  const eduCards = document.querySelectorAll("#editor-edu-container .item-edit-card");
-  if (eduCards.length > 0) {
+  const eduContainer = document.getElementById("editor-edu-container");
+  if (eduContainer) {
+    const eduCards = eduContainer.querySelectorAll(".item-edit-card");
     cvData.education = Array.from(eduCards).map((card, idx) => ({
       id: cvData.education[idx]?.id || "edu-" + idx,
       institution: card.querySelector(".edu-institution")?.value || "",
@@ -1074,8 +1101,9 @@ function extractEditorFormData() {
   }
 
   // Extract Skills
-  const skillCards = document.querySelectorAll("#editor-skills-container .item-edit-card");
-  if (skillCards.length > 0) {
+  const skillsContainer = document.getElementById("editor-skills-container");
+  if (skillsContainer) {
+    const skillCards = skillsContainer.querySelectorAll(".item-edit-card");
     cvData.skills = Array.from(skillCards).map((card, idx) => ({
       id: cvData.skills[idx]?.id || "skill-cat-" + idx,
       category: card.querySelector(".skill-cat-name")?.value || "",
@@ -1084,8 +1112,9 @@ function extractEditorFormData() {
   }
 
   // Extract Organizations
-  const orgCards = document.querySelectorAll("#editor-org-container .item-edit-card");
-  if (orgCards.length > 0) {
+  const orgContainer = document.getElementById("editor-org-container");
+  if (orgContainer) {
+    const orgCards = orgContainer.querySelectorAll(".item-edit-card");
     cvData.organizations = Array.from(orgCards).map((card, idx) => ({
       id: cvData.organizations[idx]?.id || "org-" + idx,
       role: card.querySelector(".org-role")?.value || "",
