@@ -294,59 +294,92 @@
     </section>
   </main>
 
-  <!-- CIRCULAR FLOATING ACTION BUTTON (FAB) & SPEED-DIAL POPUP -->
-  <div class="fab-wrapper">
-    <div id="fab-menu" class="fab-popup-menu">
-      <button id="btn-toggle-edit" class="fab-menu-item" title="Edit data CV secara langsung">
-        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
-          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-          <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-        </svg>
-        <span data-i18n="toolbar.edit">Modus Edit</span>
-      </button>
-      <button id="btn-print" class="fab-menu-item" title="Cetak atau Simpan sebagai PDF Format ATS">
-        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
-          <polyline points="6 9 6 2 18 2 18 9"></polyline>
-          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-          <rect x="6" y="14" width="12" height="8"></rect>
-        </svg>
-        <span data-i18n="toolbar.print">Cetak ATS PDF</span>
-      </button>
-      <button id="btn-firebase-config" class="fab-menu-item" title="Pengaturan Database Cloud Firebase">
-        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
-          <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-          <path d="M2 17l10 5 10-5"></path>
-          <path d="M2 12l10 5 10-5"></path>
-        </svg>
-        <span>Firebase DB</span>
-      </button>
-      <button id="btn-export-json" class="fab-menu-item" title="Download Data ke format JSON">
-        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="7 10 12 15 17 10"></polyline>
-          <line x1="12" y1="15" x2="12" y2="3"></line>
-        </svg>
-        <span data-i18n="toolbar.export">Export JSON</span>
-      </button>
-      <button id="btn-reset-data" class="fab-menu-item" title="Reset ke data awal">
-        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
-          <polyline points="1 4 1 10 7 10"></polyline>
-          <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
-        </svg>
-        <span data-i18n="toolbar.reset">Reset</span>
-      </button>
-    </div>
+  <!-- POPUP MODAL DIALOG MENU KELOLA CV (ADMIN TOOLS) -->
+  <div id="modal-admin-menu" class="modal-overlay" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-admin">
+      <div class="modal-header">
+        <h3>
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <span>Menu Opsi &amp; Kelola CV</span>
+        </h3>
+        <button id="btn-close-admin-modal" class="btn-icon" title="Tutup Modal">&times;</button>
+      </div>
+      <div class="modal-admin-body">
+        <p class="admin-menu-subtitle">Pilih opsi pengelolaan atau ekspor CV di bawah ini:</p>
+        <div class="admin-menu-grid">
+          <button id="btn-toggle-edit" class="admin-menu-card">
+            <div class="admin-card-icon icon-blue">
+              <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+              </svg>
+            </div>
+            <div class="admin-card-text">
+              <strong data-i18n="toolbar.edit">Modus Edit Data CV</strong>
+              <small>Ubah isi profil, pengalaman, pendidikan, organisasi, &amp; keahlian</small>
+            </div>
+          </button>
 
-    <button id="fab-trigger" class="fab-circle-btn" aria-label="Menu Opsi CV & Tools" title="Menu Opsi & Edit CV">
-      <svg class="fab-icon-open" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none">
-        <circle cx="12" cy="12" r="3"></circle>
-        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06-.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-      </svg>
-      <svg class="fab-icon-close" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" style="display: none;">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </button>
+          <button id="btn-print" class="admin-menu-card">
+            <div class="admin-card-icon icon-emerald">
+              <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+            </div>
+            <div class="admin-card-text">
+              <strong data-i18n="toolbar.print">Cetak / Export ATS PDF</strong>
+              <small>Cetak atau unduh CV format standar profesional ATS</small>
+            </div>
+          </button>
+
+          <button id="btn-export-json" class="admin-menu-card">
+            <div class="admin-card-icon icon-purple">
+              <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </div>
+            <div class="admin-card-text">
+              <strong data-i18n="toolbar.export">Export Data JSON</strong>
+              <small>Unduh file cadangan data CV (Format JSON)</small>
+            </div>
+          </button>
+
+          <button id="btn-firebase-config" class="admin-menu-card">
+            <div class="admin-card-icon icon-amber">
+              <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                <path d="M2 17l10 5 10-5"></path>
+                <path d="M2 12l10 5 10-5"></path>
+              </svg>
+            </div>
+            <div class="admin-card-text">
+              <span>Konfigurasi Firebase DB</span>
+              <small>Pengaturan koneksi Database Realtime Cloud</small>
+            </div>
+          </button>
+
+          <button id="btn-reset-data" class="admin-menu-card card-danger">
+            <div class="admin-card-icon icon-red">
+              <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none">
+                <polyline points="1 4 1 10 7 10"></polyline>
+                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+              </svg>
+            </div>
+            <div class="admin-card-text">
+              <strong data-i18n="toolbar.reset">Reset Data CV</strong>
+              <small>Kembalikan data CV ke template bawaan awal</small>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- MODAL FIREBASE DATABASE CONFIGURATION -->
@@ -483,7 +516,7 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-content">
-      <p>&copy; 2026 <strong>Fajar Nurcahya Gumillar</strong>. <span data-i18n="footer.rights">Hak cipta
+      <p><span id="btn-admin-copyright" class="copyright-trigger" title="Klik untuk Menu Opsi &amp; Kelola CV" role="button" tabindex="0">&copy;</span> 2026 <strong>Fajar Nurcahya Gumillar</strong>. <span data-i18n="footer.rights">Hak cipta
           dilindungi.</span></p>
     </div>
   </footer>

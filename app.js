@@ -698,28 +698,33 @@ function setupEventListeners() {
     });
   }
 
-  // Circular Floating Action Button (FAB) & Speed-Dial Menu Toggle
-  const fabTrigger = document.getElementById("fab-trigger");
-  const fabMenu = document.getElementById("fab-menu");
+  // Secret Copyright Trigger & Admin Options Popup Modal
+  const modalAdmin = document.getElementById("modal-admin-menu");
+  const btnAdminCopyright = document.getElementById("btn-admin-copyright");
+  const btnCloseAdmin = document.getElementById("btn-close-admin-modal");
 
-  if (fabTrigger && fabMenu) {
-    fabTrigger.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const isActive = fabMenu.classList.toggle("active");
-      fabTrigger.classList.toggle("active", isActive);
+  if (btnAdminCopyright && modalAdmin) {
+    btnAdminCopyright.addEventListener("click", () => {
+      modalAdmin.classList.add("active");
     });
+  }
 
-    document.addEventListener("click", (e) => {
-      if (!e.target.closest(".fab-wrapper")) {
-        fabMenu.classList.remove("active");
-        fabTrigger.classList.remove("active");
+  if (btnCloseAdmin && modalAdmin) {
+    btnCloseAdmin.addEventListener("click", () => {
+      modalAdmin.classList.remove("active");
+    });
+  }
+
+  if (modalAdmin) {
+    modalAdmin.addEventListener("click", (e) => {
+      if (e.target === modalAdmin) {
+        modalAdmin.classList.remove("active");
       }
     });
 
-    fabMenu.querySelectorAll(".fab-menu-item").forEach(item => {
+    modalAdmin.querySelectorAll(".admin-menu-card").forEach(item => {
       item.addEventListener("click", () => {
-        fabMenu.classList.remove("active");
-        fabTrigger.classList.remove("active");
+        modalAdmin.classList.remove("active");
       });
     });
   }

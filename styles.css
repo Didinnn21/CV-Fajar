@@ -820,91 +820,113 @@ textarea.form-control {
 }
 
 /* ==========================================================================
-   CIRCULAR FLOATING ACTION BUTTON (FAB) & SPEED-DIAL POPUP MENU
+   SECRET COPYRIGHT ADMIN TRIGGER & OPTIONS MODAL
    ========================================================================== */
-.fab-wrapper {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 99999;
+.copyright-trigger {
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  color: var(--primary);
+  background-color: var(--primary-light);
+  user-select: none;
+  margin-right: 2px;
 }
 
-.fab-circle-btn {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: var(--primary);
+.copyright-trigger:hover {
+  transform: scale(1.15);
+  background-color: var(--primary);
   color: #ffffff;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+}
+
+.modal-dialog-admin {
+  max-width: 520px;
+  height: auto;
+  max-height: 90vh;
+  border-radius: var(--radius-lg);
+}
+
+.modal-admin-body {
+  padding: 20px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+.admin-menu-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.admin-menu-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-menu-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background-color: var(--bg-alt);
+  color: var(--text-main);
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  width: 100%;
+}
+
+.admin-menu-card:hover {
+  background-color: var(--bg-surface);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.admin-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.45);
-  border: 2px solid rgba(255, 255, 255, 0.25);
-  cursor: pointer;
-  transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+  flex-shrink: 0;
 }
 
-.fab-circle-btn:hover {
-  transform: scale(1.08);
-  background-color: var(--primary-hover);
-  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.55);
-}
+.icon-blue { background: rgba(37, 99, 235, 0.12); color: var(--primary); }
+.icon-emerald { background: rgba(16, 185, 129, 0.12); color: #10b981; }
+.icon-purple { background: rgba(139, 92, 246, 0.12); color: #8b5cf6; }
+.icon-amber { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
+.icon-red { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
 
-.fab-circle-btn.active .fab-icon-open {
-  display: none !important;
-}
-
-.fab-circle-btn.active .fab-icon-close {
-  display: block !important;
-}
-
-.fab-popup-menu {
-  position: absolute;
-  bottom: 64px;
-  right: 0;
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 8px;
-  box-shadow: var(--shadow-lg);
+.admin-card-text {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  min-width: 180px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(12px) scale(0.95);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  gap: 2px;
 }
 
-.fab-popup-menu.active {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0) scale(1);
-}
-
-.fab-menu-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  border-radius: var(--radius-md);
-  font-size: 0.85rem;
-  font-weight: 600;
+.admin-card-text strong, .admin-card-text span {
+  font-size: 0.95rem;
+  font-weight: 700;
   color: var(--text-main);
-  background: none;
-  border: none;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
-.fab-menu-item:hover {
-  background-color: var(--primary-light);
-  color: var(--primary);
+.admin-card-text small {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.admin-menu-card.card-danger:hover {
+  border-color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.05);
 }
 
 /* Centered Tabbed Modal Dialog */
