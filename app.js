@@ -6,192 +6,208 @@
 const CV_DATA_LANGUAGES = {
   id: {
     profile: {
-      name: "Fajar Nurcahya Gumillar",
-      title: "Pegawai Ritel & Software Engineer Student",
+      name: "FAJAR NURCAHYA GUMILLAR",
+      title: "Pegawai Ritel",
       bio: "Pekerja berpengalaman dalam operasional toko fisik, layanan kasir, pengelolaan stok gudang, dan administrasi penjualan. Memiliki ketelitian tinggi dalam rekapitulasi barang dan transaksi, terbiasa bekerja dengan tempo cepat, serta fokus pada kerapian dan kepuasan pelanggan. Siap memberikan kontribusi maksimal dan etos kerja yang disiplin.",
       email: "Nurcahya0402@gmail.com",
-      phone: "+62 812-3456-7890",
+      phone: "+62 851-6764-0384",
       location: "Majalengka, Indonesia",
       instagram: "https://instagram.com/fajar_nurcahya",
       tiktok: "https://tiktok.com/@fajar_nurcahya",
       avatar: "avatar.png",
-      stats: { experience: "0 Thn", skills: "10+", org: "1+" }
+      stats: { experience: "4 Thn", skills: "15+", org: "4" }
     },
     experiences: [
       {
         id: "exp-1",
-        role: "Staf Operasional & Kasir Ritel",
-        company: "Toko Ritel & Distribusi",
-        period: "Januari 2022 - Sekarang",
+        role: "Admin & Packing",
+        company: "Kestore.id",
+        period: "Agustus 2021 - Mei 2023",
         type: "Full-time",
         description: [
-          "Mengelola transaksi kasir harian dan pencatatan kas keluar-masuk dengan akurasi 100%.",
-          "Melakukan pengawasan stok gudang, rekapitulasi harian, dan penataan display produk sesuai standar visual merchandising.",
-          "Memberikan pelayanan pelanggan yang cepat, ramah, dan solutif untuk meningkatkan kepuasan konsumen."
+          "Mengelola rekapitulasi pesanan harian pelanggan dan memastikan kesesuaian data stok barang.",
+          "Melakukan pemeriksaan kualitas barang (quality control) dan pembungkusan paket secara rapi dan aman sebelum dikirim.",
+          "Menjaga target kecepatan dan ketepatan pemrosesan belasan hingga puluhan paket setiap harinya."
         ],
-        tags: ["Operasional Ritel", "Layanan Kasir (POS)", "Manajemen Stok", "Pelayanan Pelanggan"]
+        tags: ["Admin Toko", "Quality Control", "Packaging", "Rekapitulasi Stok"]
+      },
+      {
+        id: "exp-2",
+        role: "Kasir & Staff Gudang",
+        company: "Toko Wahyu Frozen Food & Snack",
+        period: "Juni 2023 - September 2025",
+        type: "Full-time",
+        description: [
+          "Melayani transaksi pembayaran tunai dan non-tunai secara akurat serta ramah kepada pelanggan harian toko.",
+          "Menerima, memeriksa, dan mencatat barang masuk dari pemasok ke gudang penyimpanan frozen food dan snack.",
+          "Melakukan penataan barang di area display (shelving/freezer) serta memastikan kerapian stok toko setiap hari.",
+          "Membantu proses stock opname berkala untuk memastikan ketersediaan barang dan meminimalisir selisih stok."
+        ],
+        tags: ["Layanan Kasir", "Manajemen Gudang", "Display Barang", "Stock Opname"]
       }
     ],
     education: [
       {
         id: "edu-1",
-        institution: "Universitas / Sekolah Tinggi Informatika",
-        degree: "S1 Teknik Informatika / Perdagangan Ritel",
-        period: "2020 - 2024"
-      }
-    ],
-    skills: [
-      {
-        id: "skill-cat-1",
-        category: "Keahlian Ritel & Operasional",
-        items: ["Manajemen Stok & Gudang", "Layanan Kasir (POS)", "Administrasi Penjualan", "Rekapitulasi Transaksi", "Visual Merchandising"]
-      },
-      {
-        id: "skill-cat-2",
-        category: "Kompetensi Teknis & Alat",
-        items: ["Sistem Komputer Kasir", "Microsoft Excel / Spreadsheet", "HTML5 & CSS3", "JavaScript", "Git & GitHub"]
-      },
-      {
-        id: "skill-cat-3",
-        category: "Keahlian Interpersonal & Bahasa",
-        items: ["Komunikasi & Layanan Pelanggan", "Kerja Sama Tim", "Kedisiplinan & Etos Kerja", "Bahasa Indonesia (Native)", "Bahasa Inggris"]
+        institution: "SMA Negeri 1 Maja",
+        degree: "IPS",
+        period: "2018 - 2021"
       }
     ],
     organizations: [
       {
         id: "org-1",
-        role: "Anggota Divisi Logistik & Acara",
-        organization: "Himpunan Mahasiswa / Komunitas Ritel",
-        period: "2022 - 2023",
-        description: "Bertanggung jawab atas ketersediaan perlengkapan, pencatatan inventaris acara, dan koordinasi tim lapangan."
+        role: "Pemuda & Olahraga",
+        organization: "OSIS (SMP)",
+        period: "2016 - 2017",
+        description: "Mengelola, merencanakan, dan memfasilitasi kegiatan yang mendukung kebugaran jasmani, jiwa kompetitif, serta kekompakan antar siswa melalui olahraga dan kepemudaan."
+      },
+      {
+        id: "org-2",
+        role: "Ketua",
+        organization: "Ekstrakurikuler Voli Putra (SMP)",
+        period: "2016 - 2017",
+        description: "Manajemen Kepengurusan & Organisasi, Kepemimpinan Internal & Komunitas, Kepemimpinan Lapangan (Kapten Tim)."
+      },
+      {
+        id: "org-3",
+        role: "Bendahara",
+        organization: "Kepemudaan (Desa)",
+        period: "2019 - 2021",
+        description: "Pencatatan Keuangan, Penyusunan Anggaran (RAB), Penyimpanan & Pencairan Dana, Pelaporan Keuangan."
+      },
+      {
+        id: "org-4",
+        role: "Wakil Ketua I (Bidang Pemuda & Olahraga)",
+        organization: "Karang Taruna (Desa)",
+        period: "2020 - 2021",
+        description: "Koordinator Internal, Pengembangan Potensi Pemuda, Pelaksanaan Harian, Pelatihan Kepemimpinan & Keterampilan, Pendataan & Pemetaan Bakat, Evaluasi & Pengawasan Internal, Penjembatan Antara Seksi."
+      }
+    ],
+    skills: [
+      {
+        id: "skill-cat-1",
+        category: "Operasional Ritel",
+        items: ["Kasir", "Display Barang (Merchandising)", "Stok Gudang"]
+      },
+      {
+        id: "skill-cat-2",
+        category: "Administrasi Toko",
+        items: ["Pencatatan Stok", "Rekap Transaksi", "Quality Control (QC)"]
+      },
+      {
+        id: "skill-cat-3",
+        category: "Pelayanan Pelanggan",
+        items: ["Komunikasi Ramah", "Respon Cepat", "Pembayaran"]
+      },
+      {
+        id: "skill-cat-4",
+        category: "Sikap Kerja",
+        items: ["Disiplin", "Teliti", "Jujur", "Terbiasa Bekerja Dalam Tim/Shift"]
       }
     ]
   },
 
   en: {
     profile: {
-      name: "Fajar Nurcahya Gumillar",
-      title: "Retail Associate & Software Engineer Student",
+      name: "FAJAR NURCAHYA GUMILLAR",
+      title: "Retail Associate",
       bio: "Experienced worker in physical store operations, cashier services, warehouse inventory management, and sales administration. Possesses high precision in transaction reconciliation, thrives in fast-paced environments, and focuses on organization and customer satisfaction. Ready to deliver maximum contribution with a disciplined work ethic.",
       email: "Nurcahya0402@gmail.com",
-      phone: "+62 812-3456-7890",
+      phone: "+62 851-6764-0384",
       location: "Majalengka, Indonesia",
       instagram: "https://instagram.com/fajar_nurcahya",
       tiktok: "https://tiktok.com/@fajar_nurcahya",
       avatar: "avatar.png",
-      stats: { experience: "0 Yrs", skills: "10+", org: "1+" }
+      stats: { experience: "4 Yrs", skills: "15+", org: "4" }
     },
     experiences: [
       {
         id: "exp-1",
-        role: "Retail Operations & Cashier Associate",
-        company: "Retail & Distribution Store",
-        period: "January 2022 - Present",
+        role: "Admin & Packing",
+        company: "Kestore.id",
+        period: "August 2021 - May 2023",
         type: "Full-time",
         description: [
-          "Managed daily cashier transactions and petty cash records with 100% financial accuracy.",
-          "Supervised warehouse inventory, conducted daily stock counts, and organized product displays matching visual merchandising standards.",
-          "Delivered fast, friendly, and solution-oriented customer service to boost client satisfaction."
+          "Managed daily customer order reconciliations and ensured accurate stock inventory data.",
+          "Conducted quality control inspections and wrapped packages neatly and securely before dispatch.",
+          "Maintained daily targets for processing speed and accuracy across dozens of packages."
         ],
-        tags: ["Retail Operations", "POS Cashier Systems", "Inventory Control", "Customer Service"]
-      }
-    ],
-    education: [
-      {
-        id: "edu-1",
-        institution: "University / Institute of Technology",
-        degree: "Bachelor of Computer Science / Retail Management",
-        period: "2020 - 2024"
-      }
-    ],
-    skills: [
-      {
-        id: "skill-cat-1",
-        category: "Retail & Operational Skills",
-        items: ["Inventory & Warehouse Management", "Point of Sale (POS) Systems", "Sales Administration", "Transaction Reconciliation", "Visual Merchandising"]
+        tags: ["Store Admin", "Quality Control", "Packaging", "Inventory Stock"]
       },
       {
-        id: "skill-cat-2",
-        category: "Technical Tools & Software",
-        items: ["POS Computer Systems", "Microsoft Excel / Spreadsheets", "HTML5 & CSS3", "JavaScript", "Git & GitHub"]
-      },
-      {
-        id: "skill-cat-3",
-        category: "Interpersonal Skills & Languages",
-        items: ["Customer Service & Communication", "Team Collaboration", "Work Ethic & Discipline", "Indonesian (Native)", "English (Professional)"]
-      }
-    ],
-    organizations: [
-      {
-        id: "org-1",
-        role: "Logistics & Event Coordinator",
-        organization: "Student Association / Retail Community",
-        period: "2022 - 2023",
-        description: "Responsible for equipment procurement, event inventory tracking, and field team coordination."
-      }
-    ]
-  },
-
-  jp: {
-    profile: {
-      name: "Fajar Nurcahya Gumillar",
-      title: "小売店舗スタッフ & ソフトウェア工学専攻学生",
-      bio: "実店舗の運営、レジ業務、倉庫在庫管理、および販売事務において豊かな経験を持つスタッフ。出納集計や商品管理で高い精度を発揮し、スピーディーな環境で効率的に対応します。整頓と顧客満足度向上に重点を置き、責任感を持って貢献します。",
-      email: "Nurcahya0402@gmail.com",
-      phone: "+62 812-3456-7890",
-      location: "マジャレンカ、インドネシア",
-      instagram: "https://instagram.com/fajar_nurcahya",
-      tiktok: "https://tiktok.com/@fajar_nurcahya",
-      avatar: "avatar.png",
-      stats: { experience: "0 年", skills: "10+", org: "1+" }
-    },
-    experiences: [
-      {
-        id: "exp-1",
-        role: "小売店舗運営 & レジスタッフ",
-        company: "小売・流通ストア",
-        period: "2022年1月 - 現在",
-        type: "正社員",
+        id: "exp-2",
+        role: "Cashier & Warehouse Staff",
+        company: "Toko Wahyu Frozen Food & Snack",
+        period: "June 2023 - September 2025",
+        type: "Full-time",
         description: [
-          "日次のレジ決済業務および出納記録を正確率100%で管理。",
-          "倉庫在庫の監督、日次棚卸し、およびVMD基準に沿った商品陳列の実施。",
-          "迅速で丁寧な顧客サービスを提供し、顧客満足度の向上に貢献。"
+          "Processed cash and non-cash payment transactions accurately and provided friendly service to daily store customers.",
+          "Received, inspected, and logged incoming goods from suppliers into frozen food and snack storage.",
+          "Organized product displays in shelving/freezer areas and ensured daily store neatness.",
+          "Assisted in periodic stock takes to maintain product availability and minimize inventory discrepancies."
         ],
-        tags: ["店舗運営", "POSレジ操作", "在庫管理", "カスタマーサービス"]
+        tags: ["Cashier Service", "Warehouse Management", "Product Display", "Stock Opname"]
       }
     ],
     education: [
       {
         id: "edu-1",
-        institution: "工科大学 / 情報専門学校",
-        degree: "情報工学士 / 小売経営専攻",
-        period: "2020年 - 2024年"
-      }
-    ],
-    skills: [
-      {
-        id: "skill-cat-1",
-        category: "小売・店舗運営スキル",
-        items: ["在庫・倉庫管理", "POSレジシステム操作", "販売事務管理", "取引集計・照合", "ビジュアルマーチャンダイジング"]
-      },
-      {
-        id: "skill-cat-2",
-        category: "技術・ツールスキル",
-        items: ["POSコンピューターシステム", "Microsoft Excel / スプレッドシート", "HTML5 & CSS3", "JavaScript", "Git & GitHub"]
-      },
-      {
-        id: "skill-cat-3",
-        category: "対人スキル・語学力",
-        items: ["接客・カスタマーコミュニケーション", "チームワーク", "規律・勤勉さ", "インドネシア語（母国語）", "英語"]
+        institution: "SMA Negeri 1 Maja",
+        degree: "Social Sciences (IPS)",
+        period: "2018 - 2021"
       }
     ],
     organizations: [
       {
         id: "org-1",
-        role: "ロジスティクス＆イベント統括",
-        organization: "学生会 / 小売コミュニティ",
-        period: "2022年 - 2023年",
-        description: "イベント機器の調達、備品在庫の管理、現場チームの進行管理を担当。"
+        role: "Youth & Sports Officer",
+        organization: "OSIS Student Council (Junior High)",
+        period: "2016 - 2017",
+        description: "Managed, planned, and facilitated activities supporting physical fitness, competitive spirit, and student solidarity."
+      },
+      {
+        id: "org-2",
+        role: "Chairman",
+        organization: "Boys Volleyball Extracurricular (Junior High)",
+        period: "2016 - 2017",
+        description: "Organizational Management, Internal & Community Leadership, Field Leadership (Team Captain)."
+      },
+      {
+        id: "org-3",
+        role: "Treasurer",
+        organization: "Village Youth Organization",
+        period: "2019 - 2021",
+        description: "Financial Accounting, Budgeting (RAB), Fund Management, Financial Reporting."
+      },
+      {
+        id: "org-4",
+        role: "Vice Chairman I (Youth & Sports)",
+        organization: "Karang Taruna Youth Organization",
+        period: "2020 - 2021",
+        description: "Internal Coordinator, Youth Potential Development, Leadership & Skill Training, Talent Mapping, Internal Evaluation."
+      }
+    ],
+    skills: [
+      {
+        id: "skill-cat-1",
+        category: "Retail Operations",
+        items: ["Cashiering", "Product Display (Merchandising)", "Warehouse Stock"]
+      },
+      {
+        id: "skill-cat-2",
+        category: "Store Administration",
+        items: ["Stock Logging", "Transaction Reconciliation", "Quality Control (QC)"]
+      },
+      {
+        id: "skill-cat-3",
+        category: "Customer Service",
+        items: ["Friendly Communication", "Fast Response", "Payments"]
+      },
+      {
+        id: "skill-cat-4",
+        category: "Work Ethic",
+        items: ["Disciplined", "Meticulous", "Honest", "Teamwork / Shift Work"]
       }
     ]
   }
@@ -302,12 +318,18 @@ function loadData() {
   const saved = localStorage.getItem("cv_data_fajar_v1");
   if (saved) {
     try {
-      return JSON.parse(saved);
+      const parsed = JSON.parse(saved);
+      // Ensure parsed data has complete updated experiences and organizations
+      if (parsed && parsed.experiences && parsed.experiences.length >= 2) {
+        return parsed;
+      }
     } catch (e) {
       console.error("Failed to parse saved CV data", e);
     }
   }
-  return JSON.parse(JSON.stringify(CV_DATA_LANGUAGES[currentLang] || CV_DATA_LANGUAGES.id));
+  const defaultData = JSON.parse(JSON.stringify(CV_DATA_LANGUAGES[currentLang] || CV_DATA_LANGUAGES.id));
+  localStorage.setItem("cv_data_fajar_v1", JSON.stringify(defaultData));
+  return defaultData;
 }
 
 // Async Cloud Sync on Load (Smart Bi-directional Sync)
@@ -660,19 +682,6 @@ function setupEventListeners() {
       });
     }
   });
-
-  // Reset Data Button
-  const btnReset = document.getElementById("btn-reset-data");
-  if (btnReset) {
-    btnReset.addEventListener("click", () => {
-      if (confirm("Apakah Anda yakin ingin mengembalikan data ke data awal?")) {
-        localStorage.removeItem("cv_data_fajar_v1");
-        cvData = JSON.parse(JSON.stringify(CV_DATA_LANGUAGES[currentLang]));
-        saveData();
-        showToast("Data telah di-reset ke template awal.");
-      }
-    });
-  }
 
   // Export JSON Button
   const btnExport = document.getElementById("btn-export-json");
@@ -1195,6 +1204,10 @@ function extractEditorFormData() {
       description: card.querySelector(".org-desc")?.value || ""
     }));
   }
+
+  // Auto-persist in-progress form edits to LocalStorage instantly
+  cvData.updatedAt = new Date().toISOString();
+  localStorage.setItem("cv_data_fajar_v1", JSON.stringify(cvData));
 }
 
 // Theme Switcher Initialization
