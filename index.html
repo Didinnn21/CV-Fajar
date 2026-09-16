@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV & Curriculum Vitae - Fajar Nurcahya Gumillar</title>
+  <meta name="description" content="Curriculum Vitae dan Portofolio Profesional Fajar Nurcahya Gumillar. Informasi Pengalaman, Pendidikan, Keahlian Teknis, dan Organisasi.">
+  <meta name="author" content="Fajar Nurcahya Gumillar">
+  <link rel="stylesheet" href="styles.css?v=200">
+</head>
+<body>
+
+  <!-- NAVBAR HEADER -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="#profile" class="brand-logo">
+        <img src="avatar.png" id="brand-avatar" alt="Fajar Nurcahya Gumillar" class="brand-avatar">
+        <span>Fajar Nurcahya G.</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#profile" class="active" data-i18n="nav.profile">Profil</a></li>
+          <li><a href="#experience" data-i18n="nav.experience">Pengalaman</a></li>
+          <li><a href="#education" data-i18n="nav.education">Pendidikan</a></li>
+          <li><a href="#skills" data-i18n="nav.skills">Keahlian</a></li>
+          <li><a href="#organization" data-i18n="nav.organization">Organisasi</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Kontak</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <select id="lang-selector" class="lang-select-dropdown" aria-label="Select Language">
+          <option value="id">🇮🇩 ID</option>
+          <option value="en">🇬🇧 EN</option>
+          <option value="jp">🇯🇵 JP</option>
+        </select>
+
+        <button id="btn-theme-toggle" class="btn-icon" title="Ubah Tema Mode Gelap/Terang" aria-label="Toggle Theme">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <button id="btn-mobile-menu" class="mobile-menu-toggle btn-icon" title="Menu Navigasi" aria-label="Toggle Navigation Menu">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO / PROFILE SECTION -->
+    <section id="profile" class="hero-section">
+      <div class="container hero-grid">
+        
+        <!-- Hero Left Info -->
+        <div class="hero-content">
+          <div>
+            <span class="badge badge-primary" style="margin-bottom: 12px;" data-i18n="hero.badge">Curriculum Vitae</span>
+            <h1 id="hero-name" class="hero-name">Fajar Nurcahya Gumillar</h1>
+            <p id="hero-title" class="hero-title">Pegawai Ritel & Software Engineer Student</p>
+          </div>
+
+          <p id="hero-bio" class="hero-bio">
+            Pekerja berpengalaman dalam operasional toko fisik, layanan kasir, pengelolaan stok gudang, dan administrasi penjualan. Memiliki ketelitian tinggi dalam rekapitulasi barang dan transaksi, terbiasa bekerja dengan tempo cepat, serta fokus pada kerapian dan kepuasan pelanggan.
+          </p>
+
+          <!-- Contact Quick Info Pills -->
+          <div class="hero-info-pills">
+            <a id="pill-email" href="#" class="info-pill">email@example.com</a>
+            <a id="pill-phone" href="#" class="info-pill">+62 812-3456-7890</a>
+            <span id="pill-location" class="info-pill">Indonesia</span>
+          </div>
+
+          <!-- Hero Actions -->
+          <div class="hero-actions">
+            <button id="btn-hero-print" class="btn btn-primary" title="Cetak Format ATS PDF">
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+              <span data-i18n="toolbar.print">Cetak ATS PDF</span>
+            </button>
+            <button id="btn-hero-edit" class="btn btn-outline" title="Edit Data CV">
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+              <span data-i18n="toolbar.edit">Modus Edit</span>
+            </button>
+            <a id="link-instagram" href="#" target="_blank" class="btn btn-outline" title="Instagram Profile">
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              Instagram
+            </a>
+            <a id="link-tiktok" href="#" target="_blank" class="btn btn-outline" title="TikTok Profile">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-5.2-1.74 2.89 2.89 0 0 1 2.31-1.37V9.11a6.34 6.34 0 0 0-5.32 6.22 6.34 6.34 0 0 0 10.74 4.5 6.32 6.32 0 0 0 1.83-4.5V8.69a8.18 8.18 0 0 0 4.86 1.58V6.82a4.85 4.85 0 0 1-2-0.13z"/></svg>
+              TikTok
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Right Card & Avatar -->
+        <div class="profile-card">
+          <input type="file" id="input-avatar-file" accept="image/*" style="display: none;">
+          <div class="profile-avatar-wrapper" title="Klik untuk mengunggah foto profil baru">
+            <img id="profile-avatar" src="avatar.png" alt="Fajar Nurcahya Gumillar" class="profile-avatar-img">
+            <div class="avatar-edit-overlay">
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+              <span data-i18n="hero.changePhoto">Upload Foto</span>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <h3 style="font-size: 1.1rem; font-weight: 700;">Fajar Nurcahya Gumillar</h3>
+            <p style="font-size: 0.8rem; color: var(--text-muted);" data-i18n="hero.status">Status: Open to Opportunities</p>
+          </div>
+
+          <div class="profile-quick-stats">
+            <div class="stat-box">
+              <span id="stat-experience" class="stat-number">0 Thn</span>
+              <span class="stat-label" data-i18n="hero.statExp">Pengalaman</span>
+            </div>
+            <div class="stat-box">
+              <span id="stat-skills" class="stat-number">10+</span>
+              <span class="stat-label" data-i18n="hero.statSkills">Keahlian</span>
+            </div>
+            <div class="stat-box">
+              <span id="stat-org" class="stat-number">1+</span>
+              <span class="stat-label" data-i18n="hero.statOrg">Organisasi</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle" data-i18n="sub.exp">Riwayat Karir & Praktik</span>
+          <h2 class="section-title" data-i18n="title.exp">Pengalaman Kerja & Internships</h2>
+        </div>
+        <div id="experience-list" class="timeline-list">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle" data-i18n="sub.edu">Latar Belakang Akademis</span>
+          <h2 class="section-title" data-i18n="title.edu">Pendidikan & Kualifikasi</h2>
+        </div>
+        <div id="education-list" class="timeline-list">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle" data-i18n="sub.skills">Kompetensi Teknis</span>
+          <h2 class="section-title" data-i18n="title.skills">Keahlian & Spesialisasi</h2>
+        </div>
+        <div id="skills-grid" class="grid-3">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ORGANIZATION SECTION -->
+    <section id="organization" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle" data-i18n="sub.org">Kepemimpinan & Komunitas</span>
+          <h2 class="section-title" data-i18n="title.org">Pengalaman Organisasi</h2>
+        </div>
+        <div id="organization-list" class="timeline-list">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle" data-i18n="sub.contact">Mari Berkolaborasi</span>
+          <h2 class="section-title" data-i18n="title.contact">Hubungi Saya</h2>
+        </div>
+        
+        <div class="contact-grid">
+          <div class="contact-info-list">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div>
+                <div class="contact-label" data-i18n="contact.emailLabel">Email</div>
+                <div id="contact-email-val" class="contact-value">fajar.nurcahya@example.com</div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div>
+                <div class="contact-label" data-i18n="contact.phoneLabel">Telepon / WA</div>
+                <div id="contact-phone-val" class="contact-value">+62 812-3456-7890</div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div>
+                <div class="contact-label" data-i18n="contact.locationLabel">Lokasi</div>
+                <div id="contact-location-val" class="contact-value">Indonesia</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form Card -->
+          <form id="cv-contact-form" class="card contact-form">
+            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;" data-i18n="contact.title">Kirim Pesan</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="input-name" data-i18n="contact.nameLabel">Nama Anda</label>
+                <input type="text" id="input-name" class="form-control" placeholder="Nama Lengkap" required>
+              </div>
+              <div class="form-group">
+                <label for="input-email" data-i18n="contact.emailLabel">Email Anda</label>
+                <input type="email" id="input-email" class="form-control" placeholder="nama@email.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="input-subject" data-i18n="contact.subjectLabel">Subjek</label>
+              <input type="text" id="input-subject" class="form-control" placeholder="Subjek Pesan / Pertanyaan" required>
+            </div>
+            <div class="form-group">
+              <label for="input-message" data-i18n="contact.messageLabel">Pesan</label>
+              <textarea id="input-message" class="form-control" placeholder="Tuliskan pesan Anda di sini..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="align-self: flex-start; margin-top: 8px;" data-i18n="contact.submitBtn">
+              Kirim Pesan
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FLOATING INTERACTIVE TOOLBAR -->
+  <div class="floating-toolbar">
+    <button id="btn-toggle-edit" class="toolbar-btn" title="Edit data CV ini secara langsung">
+      <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      <span class="toolbar-text" data-i18n="toolbar.edit">Modus Edit</span>
+    </button>
+    <button id="btn-print" class="toolbar-btn" title="Cetak atau Simpan sebagai PDF">
+      <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+      <span class="toolbar-text" data-i18n="toolbar.print">Cetak ATS PDF</span>
+    </button>
+    <button id="btn-export-json" class="toolbar-btn" title="Download Data ke format JSON">
+      <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+      <span class="toolbar-text" data-i18n="toolbar.export">Export JSON</span>
+    </button>
+    <button id="btn-reset-data" class="toolbar-btn" title="Reset ke data awal">
+      <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+      <span class="toolbar-text" data-i18n="toolbar.reset">Reset</span>
+    </button>
+  </div>
+
+  <!-- MODAL TABBED DIALOG EDITOR -->
+  <div id="modal-editor" class="modal-overlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+          <span data-i18n="modal.title">Edit Data CV - Fajar Nurcahya Gumillar</span>
+        </h3>
+        <button id="btn-close-modal" class="btn-icon" style="border: none;">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="modal-content-wrapper">
+        <!-- Sidebar Navigation Tabs -->
+        <div class="modal-tabs-sidebar">
+          <button class="modal-tab-btn active" data-tab="tab-profile">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span data-i18n="tabs.profile">Profil Utama</span>
+          </button>
+          <button class="modal-tab-btn" data-tab="tab-experiences">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            <span data-i18n="tabs.exp">Pengalaman</span>
+          </button>
+          <button class="modal-tab-btn" data-tab="tab-education">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+            <span data-i18n="tabs.edu">Pendidikan</span>
+          </button>
+          <button class="modal-tab-btn" data-tab="tab-skills">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <span data-i18n="tabs.skills">Keahlian & Skill</span>
+          </button>
+          <button class="modal-tab-btn" data-tab="tab-organization">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span data-i18n="tabs.org">Organisasi</span>
+          </button>
+        </div>
+
+        <!-- Content Panes -->
+        <div id="modal-tab-content-area" class="modal-tab-content">
+          <!-- Rendered dynamically via JS -->
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <span style="font-size: 0.8rem; color: var(--text-muted);" data-i18n="modal.note">Ubah data lalu klik Simpan untuk memperbarui tampilan CV.</span>
+        <button id="btn-save-modal" class="btn btn-primary" data-i18n="modal.save">Simpan & Perbarui CV</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 <strong>Fajar Nurcahya Gumillar</strong>. <span data-i18n="footer.rights">Hak cipta dilindungi.</span></p>
+      <p style="font-size: 0.8rem; color: var(--text-light);" data-i18n="footer.builtWith">Dibuat dengan HTML5, CSS3, & JS Vanilla</p>
+    </div>
+  </footer>
+
+  <script src="app.js?v=200"></script>
+</body>
+</html>
