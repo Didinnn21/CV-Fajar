@@ -37,9 +37,7 @@ const CV_DATA_LANGUAGES = {
         id: "edu-1",
         institution: "Universitas / Sekolah Tinggi Informatika",
         degree: "S1 Teknik Informatika / Perdagangan Ritel",
-        period: "2020 - 2024",
-        gpa: "IPK: 3.50 / 4.00",
-        coursework: ["Manajemen Operasional Toko", "Sistem Informasi Kasir & Inventaris", "Komunikasi Bisnis & Layanan"]
+        period: "2020 - 2024"
       }
     ],
     skills: [
@@ -103,9 +101,7 @@ const CV_DATA_LANGUAGES = {
         id: "edu-1",
         institution: "University / Institute of Technology",
         degree: "Bachelor of Computer Science / Retail Management",
-        period: "2020 - 2024",
-        gpa: "GPA: 3.50 / 4.00",
-        coursework: ["Store Operations Management", "POS & Inventory Systems", "Business Communication"]
+        period: "2020 - 2024"
       }
     ],
     skills: [
@@ -169,9 +165,7 @@ const CV_DATA_LANGUAGES = {
         id: "edu-1",
         institution: "工科大学 / 情報専門学校",
         degree: "情報工学士 / 小売経営専攻",
-        period: "2020年 - 2024年",
-        gpa: "成績評価 (GPA): 3.50 / 4.00",
-        coursework: ["店舗運営管理", "POS・在庫情報システム", "ビジネスコミュニケーション"]
+        period: "2020年 - 2024年"
       }
     ],
     skills: [
@@ -429,8 +423,6 @@ function renderEducation() {
     return;
   }
 
-  const courseworkLabel = currentLang === "en" ? "Key Coursework / Focus:" : (currentLang === "jp" ? "主要科目・専攻分野:" : "Mata Kuliah Utama / Fokus:");
-
   container.innerHTML = cvData.education.map(edu => `
     <div class="card timeline-item">
       <div class="item-header">
@@ -439,13 +431,8 @@ function renderEducation() {
           <div class="item-company">${escapeHtml(edu.degree)}</div>
         </div>
         <div class="item-meta">
-          <span class="badge badge-accent">${escapeHtml(edu.gpa)}</span>
           <span class="item-date">${escapeHtml(edu.period)}</span>
         </div>
-      </div>
-      <div class="item-tags" style="margin-top: 12px;">
-        <strong style="font-size: 0.85rem; color: var(--text-muted); width: 100%;">${courseworkLabel}</strong>
-        ${(edu.coursework || []).map(c => `<span class="tag">${escapeHtml(c)}</span>`).join("")}
       </div>
     </div>
   `).join("");
@@ -931,20 +918,9 @@ function populateEditorForm() {
               </div>
             </div>
 
-            <div class="form-grid-2">
-              <div class="form-group">
-                <label>Tahun Masuk - Lulus</label>
-                <input type="text" class="form-control edu-period" value="${escapeHtml(edu.period)}">
-              </div>
-              <div class="form-group">
-                <label>IPK / Kualifikasi</label>
-                <input type="text" class="form-control edu-gpa" value="${escapeHtml(edu.gpa)}">
-              </div>
-            </div>
-
             <div class="form-group">
-              <label>Mata Kuliah Utama / Fokus (Dipisah koma)</label>
-              <input type="text" class="form-control edu-coursework" value="${(edu.coursework || []).join(", ")}">
+              <label>Tahun Masuk - Lulus</label>
+              <input type="text" class="form-control edu-period" value="${escapeHtml(edu.period)}">
             </div>
           </div>
         `).join("")}
@@ -1051,9 +1027,7 @@ window.addEducationItem = function() {
     id: "edu-" + Date.now(),
     institution: "[ Universitas / Sekolah ]",
     degree: "[ Gelar / Jurusan ]",
-    period: "[ Tahun Masuk - Lulus ]",
-    gpa: "IPK: 0.00",
-    coursework: ["Mata Kuliah 1"]
+    period: "[ Tahun Masuk - Lulus ]"
   });
   populateEditorForm();
   document.querySelector('[data-tab="tab-education"]')?.click();
@@ -1163,9 +1137,7 @@ function extractEditorFormData() {
       id: cvData.education[idx]?.id || "edu-" + idx,
       institution: card.querySelector(".edu-institution")?.value || "",
       degree: card.querySelector(".edu-degree")?.value || "",
-      period: card.querySelector(".edu-period")?.value || "",
-      gpa: card.querySelector(".edu-gpa")?.value || "",
-      coursework: (card.querySelector(".edu-coursework")?.value || "").split(",").map(c => c.trim()).filter(c => c !== "")
+      period: card.querySelector(".edu-period")?.value || ""
     }));
   }
 
