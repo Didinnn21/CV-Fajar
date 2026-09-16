@@ -251,6 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderAll();
   initTheme();
   setupEventListeners();
+  syncDataFromCloud();
 });
 
 // Apply Selected Language & Update All Words & Content
@@ -313,10 +314,30 @@ function loadData() {
   return JSON.parse(JSON.stringify(CV_DATA_LANGUAGES[currentLang] || CV_DATA_LANGUAGES.id));
 }
 
-// Save Data to LocalStorage
+// Async Cloud Sync on Load
+async function syncDataFromCloud() {
+  if (typeof fetchCloudCVData === "function") {
+    const cloudData = await fetchCloudCVData();
+    if (cloudData) {
+      cvData = cloudData;
+      localStorage.setItem("cv_data_fajar_v1", JSON.stringify(cvData));
+      renderAll();
+    }
+  }
+}
+
+// Save Data to LocalStorage & Supabase Cloud DB
 function saveData() {
   localStorage.setItem("cv_data_fajar_v1", JSON.stringify(cvData));
   renderAll();
+
+  if (typeof saveCloudCVData === "function") {
+    saveCloudCVData(cvData).then(res => {
+      if (res && res.success) {
+        showToast("Data CV Berhasil Disimpan ke Cloud DB!");
+      }
+    });
+  }
 }
 
 // Render All Sections
@@ -517,6 +538,54 @@ function setupEventListeners() {
       saveData();
       if (modalOverlay) modalOverlay.classList.remove("active");
       showToast("Data CV Berhasil Disimpan!");
+    });
+  }
+
+  // Firebase Database Config Modal Handlers
+  const modalFirebase = document.getElementById("modal-firebase-config");
+  const btnFirebaseConfig = document.getElementById("btn-firebase-config");
+  const btnCloseFirebase = document.getElementById("btn-close-firebase-modal");
+  const btnSaveFirebase = document.getElementById("btn-save-firebase-config");
+
+  const inputFirebaseApiKey = document.getElementById("input-firebase-apikey");
+  const inputFirebaseDbUrl = document.getElementById("input-firebase-dburl");
+  const inputFirebaseProjectId = document.getElementById("input-firebase-projectid");
+  const inputFirebaseAuthDomain = document.getElementById("input-firebase-authdomain");
+
+  if (btnFirebaseConfig && modalFirebase) {
+    btnFirebaseConfig.addEventListener("click", () => {
+      const cfg = typeof getFirebaseConfig === "function" ? getFirebaseConfig() : {};
+      if (inputFirebaseApiKey) inputFirebaseApiKey.value = cfg.apiKey || "";
+      if (inputFirebaseDbUrl) inputFirebaseDbUrl.value = cfg.databaseURL || "";
+      if (inputFirebaseProjectId) inputFirebaseProjectId.value = cfg.projectId || "";
+      if (inputFirebaseAuthDomain) inputFirebaseAuthDomain.value = cfg.authDomain || "";
+      modalFirebase.classList.add("active");
+    });
+  }
+
+  if (btnCloseFirebase && modalFirebase) {
+    btnCloseFirebase.addEventListener("click", () => {
+      modalFirebase.classList.remove("active");
+    });
+  }
+
+  if (btnSaveFirebase && modalFirebase) {
+    btnSaveFirebase.addEventListener("click", () => {
+      const apiKey = inputFirebaseApiKey?.value || "";
+      const databaseURL = inputFirebaseDbUrl?.value || "";
+      const projectId = inputFirebaseProjectId?.value || "";
+      const authDomain = inputFirebaseAuthDomain?.value || "";
+
+      if (!apiKey || !databaseURL) {
+        alert("Silakan masukkan API Key dan Database URL Firebase dengan lengkap.");
+        return;
+      }
+      if (typeof saveFirebaseConfig === "function") {
+        saveFirebaseConfig({ apiKey, databaseURL, projectId, authDomain });
+      }
+      modalFirebase.classList.remove("active");
+      showToast("Konfigurasi Firebase Disimpan! Menghubungkan ke Realtime DB...");
+      syncDataFromCloud();
     });
   }
 
