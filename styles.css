@@ -1546,7 +1546,7 @@ textarea.form-control {
 @media print {
   @page {
     size: A4 portrait;
-    margin: 10mm 12mm 10mm 12mm;
+    margin: 0; /* Removes default browser headers/footers (URL, date, page numbers) */
   }
 
   /* Universal reset to pure black text on white background for ATS OCR/Parsers */
@@ -1563,7 +1563,7 @@ textarea.form-control {
   html, body {
     width: 100% !important;
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 10mm 12mm 10mm 12mm !important; /* Move margin to body padding instead to keep content safe from edges */
     background: #ffffff !important;
     color: #000000 !important;
     font-family: Arial, Helvetica, sans-serif !important;
