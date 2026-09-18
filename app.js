@@ -733,10 +733,74 @@ function setupEventListeners() {
         const fabTrigger = document.getElementById("fab-trigger");
         if (fabMenu) fabMenu.classList.remove("active");
         if (fabTrigger) fabTrigger.classList.remove("active");
-        window.print();
+        const adminMenu = document.getElementById("modal-admin-menu");
+        if (adminMenu) adminMenu.classList.remove("active");
+        
+        generateCleanPDF();
       });
     }
   });
+
+  function generateCleanPDF() {
+    showToast("Menyiapkan file PDF bersih... Mohon tunggu (sekitar 3-5 detik).");
+    // Fetch styles.css to manually extract and apply @media print rules to screen
+    fetch('styles.css?v=' + new Date().getTime())
+      .then(res => res.text())
+      .then(css => {
+        const printStart = css.indexOf('@media print {');
+        if (printStart > -1) {
+          let bracketCount = 0;
+          let printCss = "";
+          let started = false;
+          
+          for (let i = printStart; i < css.length; i++) {
+            if (css[i] === '{') {
+              bracketCount++;
+              started = true;
+            } else if (css[i] === '}') {
+              bracketCount--;
+            }
+            if (started && bracketCount === 0) {
+              printCss = css.substring(printStart + 14, i);
+              break;
+            }
+          }
+          
+          const style = document.createElement('style');
+          style.id = 'temp-pdf-styles';
+          style.innerHTML = printCss;
+          document.head.appendChild(style);
+          
+          setTimeout(() => {
+            const opt = {
+              margin:       [0, 0, 0, 0], // Margins are already handled in our CSS body padding
+              filename:     'CV_Fajar_Nurcahya_ATS.pdf',
+              image:        { type: 'jpeg', quality: 0.98 },
+              html2canvas:  { scale: 2, useCORS: true, logging: false },
+              jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+            
+            if (typeof html2pdf !== 'undefined') {
+              html2pdf().set(opt).from(document.body).save().then(() => {
+                document.head.removeChild(style);
+                showToast("PDF berhasil di-download tanpa teks bawaan browser!");
+              }).catch(e => {
+                document.head.removeChild(style);
+                alert("Terjadi kesalahan: " + e.message);
+              });
+            } else {
+               document.head.removeChild(style);
+               window.print();
+            }
+          }, 800); // give the browser time to layout the print styles
+        } else {
+          window.print();
+        }
+      }).catch(err => {
+         console.error("Gagal mengambil CSS", err);
+         window.print();
+      });
+  }
 
   // Export JSON Button
   const btnExport = document.getElementById("btn-export-json");
