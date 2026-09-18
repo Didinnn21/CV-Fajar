@@ -261,6 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderAll();
   initTheme();
   setupEventListeners();
+  initScrollAnimations();
   syncDataFromCloud();
 });
 
@@ -388,6 +389,39 @@ function renderAll() {
   renderSkills();
   renderOrganizations();
   renderContact();
+  
+  setTimeout(() => {
+    if (typeof initScrollAnimations === 'function') {
+      initScrollAnimations();
+    }
+  }, 50);
+}
+
+// Scroll Animations Initialization
+function initScrollAnimations() {
+  const elements = document.querySelectorAll('.card, .section-header, .hero-content, .profile-card, .contact-item, .contact-form');
+  
+  elements.forEach(el => {
+    if (!el.classList.contains('animate-on-scroll')) {
+      el.classList.add('animate-on-scroll');
+    }
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+  });
+
+  document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    observer.observe(el);
+  });
 }
 
 /* ==========================================================================
@@ -407,6 +441,12 @@ function renderProfile() {
   document.getElementById("pill-phone").href = `tel:${p.phone}`;
 
   document.getElementById("pill-location").innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> ${p.location}`;
+
+  const pillWeb = document.getElementById("pill-web");
+  if (pillWeb) {
+    pillWeb.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg> ${window.location.hostname || 'Website CV'}`;
+    pillWeb.href = window.location.href;
+  }
 
   const linkInsta = document.getElementById("link-instagram");
   if (linkInsta) {
