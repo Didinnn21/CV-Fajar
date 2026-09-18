@@ -1638,6 +1638,15 @@ textarea.form-control {
     display: inline-flex !important;
   }
 
+  /* Disable animations and force visibility for print */
+  .animate-on-scroll,
+  .is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
   /* Layout Container Reset */
   .container,
   main,

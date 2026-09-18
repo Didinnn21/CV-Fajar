@@ -444,8 +444,8 @@ function renderProfile() {
 
   const pillWeb = document.getElementById("pill-web");
   if (pillWeb) {
-    pillWeb.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg> ${window.location.hostname || 'Website CV'}`;
-    pillWeb.href = window.location.href;
+    pillWeb.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg> ${window.location.hostname || 'cv-fajarn.netlify.app'}`;
+    pillWeb.href = "https://cv-fajarn.netlify.app";
   }
 
   const linkInsta = document.getElementById("link-instagram");
@@ -602,6 +602,19 @@ function setupEventListeners() {
   if (btnCloseModal) {
     btnCloseModal.addEventListener("click", () => {
       if (modalOverlay) modalOverlay.classList.remove("active");
+    });
+  }
+
+  const btnResetData = document.getElementById("btn-reset-data");
+  if (btnResetData) {
+    btnResetData.addEventListener("click", () => {
+      if (confirm("Apakah Anda yakin ingin MENGHAPUS semua data CV yang tersimpan dan mengembalikannya ke pengaturan bahasa awal? (Semua perubahan yang Anda buat akan hilang)")) {
+        localStorage.removeItem("cv_data_fajar_v1");
+        showToast("Data CV telah direset. Memuat ulang halaman...");
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
+      }
     });
   }
 
