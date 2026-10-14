@@ -323,7 +323,7 @@ function loadData() {
     try {
       const parsed = JSON.parse(saved);
       // Force skills to match official 4 categories from CV document
-      parsed.skills = JSON.parse(JSON.stringify(defaultData.skills));
+      // Pertahankan seluruh data yang tersimpan.
       localStorage.setItem("cv_data_fajar_v1", JSON.stringify(parsed));
       return parsed;
     } catch (e) {
@@ -336,50 +336,77 @@ function loadData() {
 }
 
 // Async Cloud Sync on Load (Smart Bi-directional Sync)
+
 async function syncDataFromCloud() {
-  if (typeof fetchCloudCVData === "function") {
-    try {
-      const cloudData = await fetchCloudCVData();
-      const localRaw = localStorage.getItem("cv_data_fajar_v1");
-      let localData = null;
-      if (localRaw) {
-        try { localData = JSON.parse(localRaw); } catch(e) {}
-      }
+  if (typeof fetchCloudCVData !== "function") {
+    console.error("Fungsi fetchCloudCVData tidak ditemukan.");
+    return;
+  }
 
-      if (cloudData && cloudData.profile) {
-        const cloudTime = new Date(cloudData.updatedAt || 0).getTime();
-        const localTime = new Date(localData?.updatedAt || 0).getTime();
+  try {
+    const cloudData = await fetchCloudCVData();
 
-        if (cloudData.updatedAt && cloudTime > localTime) {
-          cvData = cloudData;
-          localStorage.setItem("cv_data_fajar_v1", JSON.stringify(cvData));
-          renderAll();
-        } else if (localData && localData.profile && typeof saveCloudCVData === "function") {
-          saveCloudCVData(localData);
-        }
-      } else if (localData && localData.profile && typeof saveCloudCVData === "function") {
-        saveCloudCVData(localData);
-      }
-    } catch (err) {
-      console.warn("Sinkronisasi cloud dilewati:", err);
+    // Jika data ada di Firebase, jadikan cloud sebagai sumber utama.
+    if (cloudData && cloudData.profile) {
+      cvData = cloudData;
+
+      localStorage.setItem(
+        "cv_data_fajar_v1",
+        JSON.stringify(cloudData)
+      );
+
+      renderAll();
+      console.log("Data CV berhasil dimuat dari Firebase.");
+      return;
     }
+
+    // Jangan otomatis mengunggah data default/lokal
+    // ketika Firebase kosong atau gagal dibaca.
+    console.warn(
+      "Data CV tidak ditemukan di Firebase. " +
+      "Data lokal tidak dikirim otomatis."
+    );
+  } catch (err) {
+    console.error("Gagal memuat data CV dari Firebase:", err);
   }
 }
+
 
 // Save Data to LocalStorage & Firebase Realtime Database
-function saveData() {
+
+async function saveData() {
   cvData.updatedAt = new Date().toISOString();
-  localStorage.setItem("cv_data_fajar_v1", JSON.stringify(cvData));
+
+  localStorage.setItem(
+    "cv_data_fajar_v1",
+    JSON.stringify(cvData)
+  );
+
   renderAll();
 
-  if (typeof saveCloudCVData === "function") {
-    saveCloudCVData(cvData).then(res => {
-      if (res && res.success) {
-        showToast("Data CV Berhasil Disimpan ke Cloud DB!");
-      }
-    });
+  if (typeof saveCloudCVData !== "function") {
+    showToast("Data tersimpan lokal, tetapi Firebase belum tersedia.");
+    return false;
+  }
+
+  try {
+    const result = await saveCloudCVData(cvData);
+
+    if (result && result.success) {
+      showToast("Data CV berhasil disimpan ke Firebase!");
+      return true;
+    }
+
+    console.error("Penyimpanan Firebase gagal:", result);
+    showToast("Gagal menyimpan ke Firebase. Periksa koneksi.");
+    return false;
+  } catch (error) {
+    console.error("Error saat menyimpan data:", error);
+    showToast("Gagal menyimpan ke Firebase.");
+    return false;
   }
 }
+
 
 // Render All Sections
 function renderAll() {
@@ -389,7 +416,7 @@ function renderAll() {
   renderSkills();
   renderOrganizations();
   renderContact();
-  
+
   setTimeout(() => {
     if (typeof initScrollAnimations === 'function') {
       initScrollAnimations();
@@ -400,7 +427,7 @@ function renderAll() {
 // Scroll Animations Initialization
 function initScrollAnimations() {
   const elements = document.querySelectorAll('.card, .section-header, .hero-content, .profile-card, .contact-item, .contact-form');
-  
+
   elements.forEach(el => {
     if (!el.classList.contains('animate-on-scroll')) {
       el.classList.add('animate-on-scroll');
@@ -618,14 +645,19 @@ function setupEventListeners() {
     });
   }
 
+
   if (btnSaveModal) {
-    btnSaveModal.addEventListener("click", () => {
+    btnSaveModal.addEventListener("click", async () => {
       extractEditorFormData();
-      saveData();
-      if (modalOverlay) modalOverlay.classList.remove("active");
-      showToast("Data CV Berhasil Disimpan!");
+
+      const success = await saveData();
+
+      if (success && modalOverlay) {
+        modalOverlay.classList.remove("active");
+      }
     });
   }
+
 
   // Firebase Database Config Modal Handlers
   const modalFirebase = document.getElementById("modal-firebase-config");
@@ -735,7 +767,7 @@ function setupEventListeners() {
         if (fabTrigger) fabTrigger.classList.remove("active");
         const adminMenu = document.getElementById("modal-admin-menu");
         if (adminMenu) adminMenu.classList.remove("active");
-        
+
         // Use native print for ATS text-selection compatibility
         window.print();
       });
@@ -812,12 +844,12 @@ function setupEventListeners() {
           return;
         }
         const reader = new FileReader();
-        reader.onload = function(evt) {
+        reader.onload = function (evt) {
           const base64Img = evt.target.result;
           cvData.profile.avatar = base64Img;
           saveData();
           showToast("Foto profil berhasil diunggah!");
-          
+
           // Update modal preview if open
           const previewImg = document.getElementById("edit-avatar-preview");
           if (previewImg) previewImg.src = base64Img;
@@ -837,12 +869,12 @@ function setupEventListeners() {
 }
 
 // Global Avatar Upload Helpers for Modal Editor
-window.triggerAvatarUpload = function() {
+window.triggerAvatarUpload = function () {
   const fileInput = document.getElementById("input-avatar-file");
   if (fileInput) fileInput.click();
 };
 
-window.resetAvatarToDefault = function() {
+window.resetAvatarToDefault = function () {
   cvData.profile.avatar = "avatar.png";
   saveData();
   showToast("Foto profil di-reset ke foto standar.");
@@ -1098,7 +1130,7 @@ function populateEditorForm() {
 }
 
 // Global Handlers for Add/Remove Items
-window.addExperienceItem = function() {
+window.addExperienceItem = function () {
   extractEditorFormData();
   cvData.experiences.push({
     id: "exp-" + Date.now(),
@@ -1113,14 +1145,14 @@ window.addExperienceItem = function() {
   document.querySelector('[data-tab="tab-experiences"]')?.click();
 };
 
-window.removeExperienceItem = function(idx) {
+window.removeExperienceItem = function (idx) {
   extractEditorFormData();
   cvData.experiences.splice(idx, 1);
   populateEditorForm();
   document.querySelector('[data-tab="tab-experiences"]')?.click();
 };
 
-window.addEducationItem = function() {
+window.addEducationItem = function () {
   extractEditorFormData();
   cvData.education.push({
     id: "edu-" + Date.now(),
@@ -1132,14 +1164,14 @@ window.addEducationItem = function() {
   document.querySelector('[data-tab="tab-education"]')?.click();
 };
 
-window.removeEducationItem = function(idx) {
+window.removeEducationItem = function (idx) {
   extractEditorFormData();
   cvData.education.splice(idx, 1);
   populateEditorForm();
   document.querySelector('[data-tab="tab-education"]')?.click();
 };
 
-window.addSkillCategory = function() {
+window.addSkillCategory = function () {
   extractEditorFormData();
   cvData.skills.push({
     id: "skill-cat-" + Date.now(),
@@ -1150,14 +1182,14 @@ window.addSkillCategory = function() {
   document.querySelector('[data-tab="tab-skills"]')?.click();
 };
 
-window.removeSkillCategory = function(idx) {
+window.removeSkillCategory = function (idx) {
   extractEditorFormData();
   cvData.skills.splice(idx, 1);
   populateEditorForm();
   document.querySelector('[data-tab="tab-skills"]')?.click();
 };
 
-window.addOrganizationItem = function() {
+window.addOrganizationItem = function () {
   extractEditorFormData();
   cvData.organizations.push({
     id: "org-" + Date.now(),
@@ -1170,7 +1202,7 @@ window.addOrganizationItem = function() {
   document.querySelector('[data-tab="tab-organization"]')?.click();
 };
 
-window.removeOrganizationItem = function(idx) {
+window.removeOrganizationItem = function (idx) {
   extractEditorFormData();
   cvData.organizations.splice(idx, 1);
   populateEditorForm();
